@@ -22,12 +22,12 @@ SELECT
 
 -- 4  Посчитайте количество уникальных заказов purchase_order_id
 SELECT
-	purchase_order_id,
-	count(pod.purchase_order_id) AS count_purchase_order_id
+	DISTINCT
+	count(purchase_order_id) OVER () AS unique_purchase_order_id_quantity
 FROM
 	northwind.purchase_order_details pod
 GROUP BY
-	pod.purchase_order_id ;
+	pod.purchase_order_id;
 
 -- 5 Выведите все столбцы таблицы order_details, а также дополнительный столбец payment_method из таблицы purchase_orders 
 --  Оставьте только заказы для которых известен payment_method
