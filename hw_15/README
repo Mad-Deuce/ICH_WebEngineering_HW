@@ -12,7 +12,7 @@ Web engineering 2025 (evening): Домашнее задание 15
 
 Коллекция bookings: подсчитайте, у скольких автомобилей при окончании аренды закончилось топливо (final_fuel)
 
-    db.bookings.find({final_fuel: 0})
+    db.bookings.countDocuments({final_fuel: {$lte: 0}})
 
 
 Коллекция bookings: найдите номерной знак и vin номер авто, с самым большим километражом (distance)
