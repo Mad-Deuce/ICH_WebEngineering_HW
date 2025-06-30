@@ -1,0 +1,11 @@
+{
+  "id": "6862f34adb645ff8637af657",
+  "name": "hw_18_1",
+  "namespace": "sample_airbnb.listingsAndReviews",
+  "comments": true,
+  "autoPreview": true,
+  "collationString": "",
+  "host": "studyatlas.8lb7fyx.mongodb.net",
+  "pipelineText": "[\n  {\n    $match:\n      /**\n       * query: The query in MQL.\n       */\n      {\n        \"address.location\": {\n          $geoWithin: {\n            $centerSphere: [\n              [-157, 20.5],\n              300 / 3963.2\n            ]\n          }\n        }\n      }\n  },\n  {\n    $group:\n      /**\n       * _id: The id of the group.\n       * fieldN: The first field name.\n       */\n      {\n        _id: {},\n        avg_price: {\n          $avg: \"$price\"\n        }\n      }\n  },\n  {\n    $project:\n      /**\n       * specifications: The fields to\n       *   include or exclude.\n       */\n      {\n        avg_price: {\n          $round: [\"$avg_price\", 2]\n        }\n      }\n  }\n]",
+  "lastModified": 1751315976034
+}

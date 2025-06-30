@@ -1,0 +1,11 @@
+{
+  "id": "6862f958db645ff8637af659",
+  "name": "hw_18_2",
+  "namespace": "sample_mflix.movies",
+  "comments": true,
+  "autoPreview": true,
+  "collationString": "",
+  "pipelineText": "[\n  {\n    $match:\n      /**\n       * query: The query in MQL.\n       */\n      {\n        year: {\n          $gte: 2015,\n          $lte: 2023\n        },\n        \"imdb.rating\": {\n          $gt: 8\n        }\n      }\n  },\n  {\n    $group:\n      /**\n       * _id: The id of the group.\n       * fieldN: The first field name.\n       */\n      {\n        _id: \"count_docs\",\n        count_docs: {\n          $sum: 1\n        }\n      }\n  }\n  // {\n  //   $sort:\n  //     /**\n  //      * Provide any number of field/order pairs.\n  //      */\n  //     {\n  //       \"imdb.rating\": -1\n  //     }\n  // },\n  // {\n  //   $limit:\n  //     /**\n  //      * Provide the number of documents to limit.\n  //      */\n  //     1\n  // }\n]",
+  "host": "studyatlas.8lb7fyx.mongodb.net",
+  "lastModified": 1751316824394
+}
